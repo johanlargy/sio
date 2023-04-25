@@ -1,0 +1,5 @@
+#!/bin/bash
+DAT=$(date "+%u")
+
+ssh root@ap22 "mysqldump -u gsbadm -pgsbadm gsbvisite | gzip"  > gsbvisite-$DAT.sql.gz
+cp gsbvisite-$DAT.sql.gz latest.sql.gz

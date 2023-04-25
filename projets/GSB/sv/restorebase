@@ -1,0 +1,2 @@
+#!/bin/bash
+zcat latest.sql.gz|ssh root@ap22 "mysql -u gsbadm -pgsbadm gsbvisite"

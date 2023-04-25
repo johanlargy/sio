@@ -1,0 +1,149 @@
+http://www.toutjavascript.com/savoir/savoir06_2.php3
+
+En javascript, la concaténation se fait avec le caractère plus (+) ou bien grace à la méthode concat().
+
+Dans les deux exemples ci-dessous, la variable chaîne 3 contient la chaîne "Bonjour tout le monde" :
+
+var chaine1 = "Bonjour ";
+var chaine2 = "tout le monde";
+var chaine3 = chaine1+chaine2;
+
+L'exemple ci-dessus est équivalent à l'exemple suivant :
+
+var chaine1 = "Bonjour ";
+var chaine2 = "tout le monde";
+var chaine3 = chaine1.concat(chaine2);
+---------------------------------------------------------
+indexOf: Retourne la position d'une sous-chaîne (lettre ou groupe de lettres) dans une chaîne de caractère, en effectuant la recherche de gauche à droite, à partir de la position spécifiée en paramètre. Retourne -1 si la sous-chaîne n'est pas trouvée dans la chaîne principale.
+
+var Chaine = 'Comment ça marche?';
+var Sous_Chaine = 'mar';
+var Sous_Chaine_2 = 'zzz';
+
+var Resultat = Chaine.indexOf(Sous_Chaine); //Retourne 11
+var Resultat = Chaine.indexOf(Sous_Chaine_2); //Retourne -1
+
+---------------------------------------------------------
+
+Pour récupérer l'indice la ligne sélectionnée :
+ this.form.elements['liste'].selectedIndex
+Pour récupérer le nombre de lignes :
+ this.form.elements['liste'].options.length
+Pour récupérer la valeur de la ligne sélectionnée :
+ this.form.elements['liste'].options[this.form.elements['liste'].selectedIndex].value 
+
+En JavaScript, la structure d'un élément de type SELECT reprend ce schéma :
+name 		Nom de la liste 	 
+selectedIndex 	Indice de la ligne sélectionnée (ligne 1 : indice=0) 	
+options 	Tableau des lignes 	 
+length 		Nombre de lignes 	
+   value 	Valeur d'une ligne 	
+   text 	Libellé d'une ligne
+
+---------------------------------------------------------
+
+<FORM>
+    <INPUT type="text" name="zonedetexte" value="Valeur initiale">
+    <INPUT type="button" value="Changer le contenu"
+    onClick=' this.form.zonedetexte.value="NOUVEAU" '>
+</FORM>
+Grâce à this.form, on peut accéder au formulaire de l'élément en cours. 
+
+
+---------------------------------------------------------
+
+Pour donner le focus au champ texte du haut de cette page, il faut appeler la méthode focus() sur cet élément.
+document.forms["general"].elements["champ1"].focus() 
+
+Pour donner le focus à un champ de formulaire à l'ouverture de la page, il faut ajouter cette ligne dans la balise BODY :
+onLoad="document.forms['nomduform'].elements['nomchamp'].focus()"
+
+--------------------------------------------------------
+Pour manipuler les nombres en javascript, il faut utiliser l'objet Math.
+abs()
+
+x=Math.abs(y);
+
+La méthode abs() renvoie la valeur absolue (valeur positive) de y. Il supprime en quelque sorte le signe négatif d'un nombre.
+
+y = 4;
+x = math.abs(y);
+x = Math.abs(4);
+x = math.abs(-4);
+ont comme résultat
+x = 4
+
+
+ 
+ceil()
+
+x=Math.ceil(y);
+
+La méthode ceil() renvoie l'entier supérieur ou égal à y.
+
+Attention ! Cette fonction n'arrondit pas le nombre.
+Comme montré dans l'exemple, si y = 1.01, la valeur de x sera mise à 2.
+
+y=1.01;
+x=Math.ceil(y);
+a comme résultat 2.
+
+
+ 
+floor()
+
+x=Math.floor(y);
+
+La méthode floor() renvoie l'entier inférieur ou égal à y.
+
+Attention ! Cette fonction n'arrondit pas le nombre.
+Comme montré dans l'exemple, si y = 1.99, la valeur de x sera mise à 1.
+
+y=1.999;
+x=Math.floor(y);
+a comme résultat 1.
+
+
+ 
+round()
+
+x=Math.round(y);
+
+La méthode round() arrondit le nombre à l'entier le plus proche.
+
+y=20.355;
+x=Math.round(y);
+a comme résultat
+x=20;
+
+Attention ! Certains calculs réclament une plus grande précision. Pour avoir deux décimales après la virgule, on utilisera la formule :
+
+x=(Math.round(y*100))/100;
+et dans ce cas
+x=20.36;
+
+
+ 
+max()
+
+x=Math.max(y,z);
+
+La méthode max(y,z) renvoie le plus grand des 2 nombres y et z.
+
+y=20; z=10;
+x=Math.max(y,z);
+a comme résultat
+x=20;
+
+
+ 
+min()
+
+x=Math.min(y,z);
+
+La méthode min(y,z) renvoie le plus petit des 2 nombres y et z.
+
+y=20; z=10;
+x=Math.min(y,z);
+a comme résultat
+x=10; 

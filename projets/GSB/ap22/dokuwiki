@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#set -e
+set -u
+
+#installation des paquets
+apt install -y wget apache2 php php-gd php-mbstring php-xml
+
+# script instalation
+cd /tmp || return
+wget http://depl.sio.lan/store/dokuwiki-stable.tgz
+tar xvfz dokuwiki-stable.tgz
+mkdir /var/www/html/doku
+if [[ ! -d dokuwiki-2020-07-29 ]] ; then
+  echo "$0 : erreur version dokuwiki"
+fi
+cp -a dokuwiki-2020-07-29/* /var/www/html/doku
+cd /var/www/html/doku || return
+chown -R root:root .
+chmod -R 755 .
+chown -R www-data:www-data data lib conf
+
+adresse=$(ip -br a|grep UP|awk '{print $3}'|cut -f1 -d'/')
+  echo "instalation de dokuwiki terminee. Connectez-vous avec un navigateur à l'adresse http://${adresse}/doku"
+
+exit 0

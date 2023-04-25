@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  php:
+    container_name: php
+    #image: php:apache
+    build: './php'
+    restart: always
+    ports:
+      - "8000:80" 
+    volumes:
+      - ./app:/var/www/html 
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+  db:
+    container_name: db
+    image: mariadb
+    restart: always
+    ports:
+      - "3306:3306" 
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d
+    env_file:
+      - ./.env

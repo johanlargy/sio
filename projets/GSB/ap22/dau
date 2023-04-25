@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+set -u
+
+login=$1
+password=$(htpasswd -bnBC 10 "$1" "$1")
+
+echo "${password}:${login}:${login}@localhost:${login},user"

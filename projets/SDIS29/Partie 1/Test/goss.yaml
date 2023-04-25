@@ -1,0 +1,73 @@
+package:
+  adminer:
+    installed: true
+    versions:
+    - 4.7.9-2
+  apache2:
+    installed: true
+    versions:
+    - 2.4.54-1~deb11u1
+  mariadb-server:
+    installed: true
+    versions:
+    - 1:10.5.15-0+deb11u1
+port:
+  tcp6:80:
+    listening: true
+    ip:
+    - '::'
+service:
+  apache2:
+    enabled: true
+    running: true
+  mariadb:
+    enabled: true
+    running: true
+  mysql:
+    enabled: true
+    running: true
+user:
+  mysql:
+    exists: true
+    uid: 108
+    gid: 115
+    groups:
+    - mysql
+    home: /nonexistent
+    shell: /bin/false
+group:
+  mysql:
+    exists: true
+    gid: 115
+command:
+  ssh debian@ap32-prod hostname:
+    exit-status: 0
+    stdout:
+    - ap32-prod
+    stderr: []
+    timeout: 10000
+process:
+  apache2:
+    running: true
+interface:
+  eth0:
+    exists: true
+    addrs:
+    - 172.16.0.67/24
+    - fe80::24d8:14ff:fed9:1a4d/64
+    mtu: 1500
+http:
+  http://ap32-test/adminer:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 5000
+    body:
+    - Adminer
+  http://ap32-wiki/doku:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 5000
+    body:
+    - AP 32

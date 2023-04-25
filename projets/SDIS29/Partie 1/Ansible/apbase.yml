@@ -1,0 +1,29 @@
+---
+- name: apbase
+  hosts: ap32
+  become: true
+  become_method: sudo
+  tasks:
+  - name: Ajout fichier apt.conf
+    copy:
+      src: apt.conf
+      dest: /etc/apt/apt.conf
+
+  - name: apt update & upgrade
+    apt:
+      update_cache: yes
+      upgrade: yes
+
+  - name: Installation des packets
+    apt:
+      name:
+        - apache2
+        - php
+        - php-mbstring
+        - php-mysql
+        - mariadb-server
+        - git
+        - python3-mysqldb
+        - python3-passlib
+        - python3-pymysql
+      state: present

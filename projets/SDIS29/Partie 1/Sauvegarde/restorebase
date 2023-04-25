@@ -1,0 +1,2 @@
+#!/bin/bash
+zcat dump.latest.gz|ssh root@ap32-test "mysql -u admin -padmin sdis2022"

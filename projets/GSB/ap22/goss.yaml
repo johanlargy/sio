@@ -1,0 +1,85 @@
+package:
+  adminer:
+    installed: true
+    versions:
+    - 4.7.9-2
+  apache2:
+    installed: true
+    versions:
+    - 2.4.52-1~deb11u2
+  mariadb-server:
+    installed: true
+    versions:
+    - 1:10.5.12-0+deb11u1
+  php-gd:
+    installed: true
+    versions:
+    - 2:7.4+76
+  php-mbstring:
+    installed: true
+    versions:
+    - 2:7.4+76
+  phpmyadmin:
+    installed: true
+    versions:
+    - 4:5.0.4+dfsg2-2
+port:
+  tcp6:80:
+    listening: true
+    ip:
+    - '::'
+service:
+  apache2:
+    enabled: true
+    running: true
+  ssh:
+    enabled: true
+    running: true
+group:
+  ssh:
+    exists: true
+    gid: 111
+command:
+  ping -c4 9.9.9.9:
+    exit-status: 0
+    stdout:
+    - 0% packet loss
+    stderr: []
+    timeout: 10000
+dns:
+  A:ns.sio.lan:
+    resolvable: true
+    addrs:
+    - 10.121.38.7
+    timeout: 500
+    server: 10.121.38.7
+process:
+  apache2:
+    running: true
+interface:
+  ens18:
+    exists: true
+    addrs:
+    - 10.121.38.77/24
+    - fe80::c42:f5ff:fef0:ea2f/64
+    mtu: 1500
+http:
+  http://ap22/adminer/:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 5000
+    body: []
+  http://ap22/doku/doku.php:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 5000
+    body:
+    - Wiki Groupe AP 22
+  http://ap22/phpmyadmin/index.php:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 5000
+    body: []

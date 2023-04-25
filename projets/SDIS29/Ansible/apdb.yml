@@ -1,0 +1,23 @@
+---
+- name: apdb
+  hosts: ap32
+  become: true
+  become_method: sudo
+  tasks:
+  - name: creation nouvelle db sdis2022
+    community.mysql.mysql_db:
+      name: sdis29
+      login_user: root
+      login_password: admin
+      state: present
+      login_unix_socket: /run/mysqld/mysqld.sock
+
+  - name: creation utilisateur ap32  
+    community.mysql.mysql_user:
+      login_user: root
+      login_password: admin
+      name: ap32
+      password: ap32
+      priv: 'sdis29.*:ALL'
+      state: present
+      login_unix_socket: /run/mysqld/mysqld.sock

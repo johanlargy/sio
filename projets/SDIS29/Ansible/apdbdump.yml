@@ -1,0 +1,19 @@
+---
+- hosts: ap32
+  become: true
+  become_method: sudo
+  tasks:
+  - name: Dump database
+    community.mysql.mysql_db:
+      state: dump
+      name: "sdis29"
+      login_user: ap32
+      login_password: ap32
+      target: /tmp/sdis29-dump.sql.gz
+      login_unix_socket: /run/mysqld/mysqld.sock
+
+  - name: copie du dump sur machine locale
+    fetch:
+      src: /tmp/sdis29-dump.sql.gz
+      dest: sdis29-dump.sql.gz
+      flat: yes

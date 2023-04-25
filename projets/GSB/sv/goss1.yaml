@@ -1,0 +1,28 @@
+file:
+  /root/latest.sql.gz:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+command:
+  crontab -l:
+    exit-status: 0
+    stdout:
+    - 0 21 * * 1-7 /root/svbase
+    stderr: []
+    timeout: 10000
+  ssh ap22 hostname:
+    exit-status: 0
+    stdout:
+    - ap22
+    stderr: []
+    timeout: 10000
+interface:
+  enp0s3:
+    exists: true
+    addrs:
+    - 192.168.0.27/24
+    - fe80::a00:27ff:feef:c5c3/64
+    mtu: 1500
